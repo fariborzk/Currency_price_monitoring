@@ -1,0 +1,11 @@
+httpx
+beautifulsoup4
+python-dotenv
+pillow
+pathlib
+httpx[http2]>=0.27
+beautifulsoup4>=4.12
+# برای تلگرام (fallback در صورتی که telegram_notifier ایمپورت نشد)
+requests>=2.32
+# برای اسکرین‌شات (در نسخه‌های بعدی که فعالش می‌کنیم)
+playwright>=1.46
