@@ -32,3 +32,77 @@ The following tools and libraries are used to run the project:
 
 ## Project Structure
 
+SendCurrencyPrices/
+│
+├── .env # Environment configuration (e.g., Telegram token)
+├── .idea # Project IDE files (JetBrains)
+├── .venv # Virtual environment
+├── requirements.txt # Project dependencies
+├── telegram_notifier.py # Script to send notifications via Telegram
+├── tgn_monitor.py # Main monitoring script
+├── dump_pages.py # Script for scraping price data
+├── probe_cell.py # Helper script for web scraping
+└── price_page.html # Template for price page scraping
+
+## How to Run
+
+1. **Install dependencies**: 
+   - First, create a virtual environment:
+     ```bash
+     python3 -m venv .venv
+     ```
+   - Activate the environment:
+     ```bash
+     source .venv/bin/activate
+     ```
+   - Install required libraries:
+     ```bash
+     pip install -r requirements.txt
+     ```
+
+2. **Configure the environment**:
+   - Set up environment variables (e.g., Telegram bot token) in the `.env` file.
+
+3. **Run the monitoring system**:
+   - To start the system, run the following command:
+     ```bash
+     python tgn_monitor.py
+     ```
+
+4. The system will monitor the price pages and send notifications via Telegram whenever a price change is detected.
+
+---
+
+## Logs and Notifications
+
+- **Price Changes**: Every price change is logged in a **CSV file** with the following columns:
+  - Timestamp
+  - Old Price
+  - New Price
+  - Price Change Percentage
+
+- **Telegram Notifications**: Whenever a price changes, the bot sends a notification with the following message:
+  - **Price Update**: New price details with a link to the web page.
+  
+---
+
+## Daily Report
+
+At the end of each day, a daily report is automatically generated and sent via the Telegram bot. The report includes:
+
+- A summary of all price changes for the day.
+- A link to the full price history in the **CSV file**.
+
+---
+
+## Conclusion
+
+This system provides a reliable and automated solution for monitoring currency prices in real-time, logging changes, and sending notifications through Telegram. It ensures 24/7 monitoring and timely reporting of price fluctuations.
+
+---
+
+## References
+
+- **Telegram Bot API**: [Telegram Bot API Documentation](https://core.telegram.org/bots/api)
+- **BeautifulSoup Documentation**: [BeautifulSoup Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+- **Python Requests**: [Python Requests Library](https://requests.readthedocs.io/en/master/)
